@@ -1,0 +1,29 @@
+{
+  "name": "salvation-api",
+  "version": "1.0.0",
+  "description": "Api and DB for project Salvation",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TNT-MediaDigital/salvation.git#Api-db"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "jwt",
+    "authentication",
+    "mysql"
+  ],
+  "author": "TNT-Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TNT-MediaDigital/salvation/issues"
+  },
+  "homepage": "https://github.com/TNT-MediaDigital/salvation/tree/Api-db#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
