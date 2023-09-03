@@ -11,6 +11,15 @@ app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: true }));
 
+const db = require("./app/models");
+db.sequelize.sync()
+    .then(() => {
+        console.log("Synced database");
+    })
+    .catch((err) => {
+        console.log("Failed to sync database " + err.message);
+    });
+
 app.get("/", (req, res) => {
     res.json({ message: "Hello, TNT's!" });
 });
