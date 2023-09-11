@@ -52,8 +52,23 @@ exports.findAll = (req, res) => {
 
 //Find sigle data using id
 exports.findOne = (req, res) => {
+    const id = req.params.id;
 
-
+    Test.findByPk(id)
+        .then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.status(404).send({
+                    message: `Cannot find test with id = ${id}`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: `cannot find test with id = ${id}`
+            });
+        });
 };
 
 //update sigle data using id
