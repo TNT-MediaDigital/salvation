@@ -73,7 +73,27 @@ exports.findOne = (req, res) => {
 
 //update sigle data using id
 exports.update = (req, res) => {
+    const id = req.params.id;
 
+    Test.update(req.body, {
+        where: { id: id }
+    })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "Test updated successfully"
+                });
+            } else {
+                res.send({
+                    message: `Test cannot update with id = ${id}. Maybe because the test doesn't exist or req body was empty`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error updating test with id =" + id
+            });
+        });
 
 };
 
