@@ -99,7 +99,26 @@ exports.update = (req, res) => {
 
 //delete sigle data using id
 exports.delete = (req, res) => {
-
+    const id = req.params.id;
+    Test.destroy({
+        where: { id: id }
+    })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "Test delete successfully"
+                });
+            } else {
+                res.send({
+                    message: `Test delete failed with id = ${id}. Maybe because the test does not exist or req body is empty`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error deleting test with id = " + id
+            });
+        });
 
 };
 
