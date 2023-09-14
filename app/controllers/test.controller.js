@@ -124,7 +124,19 @@ exports.delete = (req, res) => {
 
 //delete all sigle data
 exports.deleteAll = (req, res) => {
-
+    Test.destroy({
+        where: {},
+        truncate: false
+    })
+        .then(nums => {
+            res.send({ message: `${nums} test successfully deleted` });
+        })
+        .catch(err => {
+            res.status.send({
+                message:
+                    err.message || "some error occurred while deleting"
+            });
+        });
 
 };
 
