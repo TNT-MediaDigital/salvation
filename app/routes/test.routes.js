@@ -8,4 +8,21 @@ module.exports = app => {
 
     //retrieve routes for all tests
     router.get("/", tests.findAll);
-}
+
+    //retrieve all published test routes
+    router.get("/published", tests.finAllpublished);
+
+    //retrieve a single test route with id
+    router.get("/:id", tests.findOne);
+
+    //update a test with id
+    router.put("/:id", tests.update);
+
+    //delete a test with id
+    router.delete("/:id", tests.delete);
+
+    //delete all test
+    router.delete("/", tests.deleteAll);
+
+    app.use('/api/tests', router);
+};
