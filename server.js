@@ -24,6 +24,8 @@ app.get("/", (req, res) => {
     res.json({ message: "Hello, TNT's!" });
 });
 
+require("./app/routes/test.routes")(app);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}.`);
