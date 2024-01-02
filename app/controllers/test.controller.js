@@ -1,11 +1,13 @@
 const db = require("../models");
 const Test = db.test;
-const Op = db.Sequelize.Op;
+const { Op } = require('sequelize');
 
 //Create
 exports.create = (req, res) => {
     //validate request
-    if (!req.body.title) {
+    console.log('Request Body:', req.body);
+    if (!req.body) {
+        console.log('Request Body:', req.body);
         res.status(400).send({
             message: "Content can not be empty!"
         });
