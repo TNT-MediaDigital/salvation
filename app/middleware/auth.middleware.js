@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const config = process.env.SECRET;
+const config = process.env.SECRET || 'tnt_salvation';
 const db = require("../models");
 const User = db.user;
 

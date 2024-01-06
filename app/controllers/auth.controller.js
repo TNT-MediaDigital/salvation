@@ -2,7 +2,7 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcrypt");
 
 const db = require("../models");
-const config = process.env.SECRET
+const config = process.env.SECRET || 'tnt_salvation';
 const User = db.user;
 const Role = db.role;
 
