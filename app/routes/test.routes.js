@@ -1,7 +1,8 @@
 module.exports = app => {
     const tests = require("../controllers/test.controller");
+    const user = require("../middleware/auth.middleware");
 
-    var router = require("express").Router();
+    const router = require("express").Router();
 
     //create routes for new test
     router.post("/", tests.create);
@@ -24,5 +25,5 @@ module.exports = app => {
     //delete all test
     router.delete("/", tests.deleteAll);
 
-    app.use('/api/tests', router);
+    app.use('/api/tests', user.verifyToken, router);
 };

@@ -1,21 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config();
 
 
 const app = express();
+app.use(cors());
 
-var corsOptions = {
-    origin: "http://localhost:5000"
-};
-
-app.use(cors(corsOptions));
+// Passport Configuration
 
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.json());
-
-//console.log(process.env.DB_USER)
 
 const db = require("./app/models");
 db.sequelize.sync()
@@ -30,9 +23,14 @@ app.get("/", (req, res) => {
     res.json({ message: "Hello, TNT's!" });
 });
 
-require("./app/routes/test.routes")(app);
+adminBoard = require("./app/controllers/user.controller")
 
-const PORT = process.env.PORT;
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
+require('./app/routes/test.routes')(app);
+
+
+const PORT = process.env.PORT || '5000';
 app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}.`);
+    console.log(`Listening on port ${PORT}.`);
 });
